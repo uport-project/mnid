@@ -1,4 +1,4 @@
-# Extendible Address Encoding
+# Chain Address Encoding
 
 ** WIP **
 
@@ -10,13 +10,14 @@ The Bitcoin protocol uses [Base58Check encoding](https://en.bitcoin.it/wiki/Base
 
 ## Extendible Encoding
 
-The proposal is inspired by the Base58Check encoding but uses Ethereums [RLP](https://github.com/ethereum/wiki/wiki/RLP) encoding scheme, which makes it easier to create a simple yet future proof scheme. 
+The proposal is inspired by the Base58Check encoding, but uses. 
 
 The following items could be encoded:
 
-* network id or four bytes of genesis block hash (or both)
-* actual address data
-* Four bytes (32 bits) of SHA256-based error checking code (digest of the version and payload)
+* 1 byte network id or 4 bytes of genesis block hash
+* future data could be placed next and could be [RLP](https://github.com/ethereum/wiki/wiki/RLP)
+* actual address data (20 bytes)
+* Four bytes (32 bits) of SHA3-based error checking code (digest of the version and payload)
 
 Then use base58 encoding of the end result. The end result is fairly complete but still extendible in the future. We could start using simply the network id and replace it with with genesis block hash and other meta data in the future.
 
