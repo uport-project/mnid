@@ -3,7 +3,7 @@ import { encode, decode } from '../index'
 describe('encode', () => {
   it('main-net', () => {
     expect(encode({
-      network: '0x01',
+      network: '0x1',
       address: '0x00521965e7bd230323c423d96c657db5b79d099f'
     })).toEqual('2nQtiQG6Cgm1GYTBaaKAgr76uY7iSexUkqX')
   })
@@ -17,7 +17,7 @@ describe('encode', () => {
 
   it('ropsten', () => {
     expect(encode({
-      network: '0x03',
+      network: '0x3',
       address: '0x00521965e7bd230323c423d96c657db5b79d099f'
     })).toEqual('2oDZvNUgn77w2BKTkd9qKpMeUo8EL94QL5V')
   })
@@ -34,7 +34,7 @@ describe('decode', () => {
   it('main-net', () => {
     expect(decode('2nQtiQG6Cgm1GYTBaaKAgr76uY7iSexUkqX')).toEqual(
       {
-        network: '0x01',
+        network: '0x1',
         address: '0x00521965e7bd230323c423d96c657db5b79d099f'
       }
     )
@@ -58,7 +58,7 @@ describe('decode', () => {
   it('ropsten', () => {
     expect(decode('2oDZvNUgn77w2BKTkd9qKpMeUo8EL94QL5V')).toEqual(
       {
-        network: '0x03',
+        network: '0x3',
         address: '0x00521965e7bd230323c423d96c657db5b79d099f'
       }
     )

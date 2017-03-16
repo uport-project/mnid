@@ -1,5 +1,7 @@
 var BASE58 = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
 var base58 = require('base-x')(BASE58)
+var hex = require('base-x')('0123456789abcdef')
+
 import { sha3_256 } from 'js-sha3'
 import { Buffer } from 'buffer'
 
@@ -8,7 +10,7 @@ function checksum (payload) {
 }
 
 export function encode ({network, address}) {
-  const payload = [new Buffer('01', 'hex'), new Buffer(network.slice(2), 'hex'), new Buffer(address.slice(2), 'hex')]
+  const payload = [new Buffer('01', 'hex'), hex.decode(network.slice(2)), new Buffer(address.slice(2), 'hex')]
   payload.push(checksum(payload))
   return base58.encode(Buffer.concat(payload))
 }
@@ -22,7 +24,7 @@ export function decode (encoded) {
   const check = data.slice(netLength + 20)
   if (check.equals(checksum([version, network, address]))) {
     return {
-      network: `0x${network.toString('hex')}`,
+      network: `0x${hex.encode(network)}`,
       address: `0x${address.toString('hex')}`
     }
   } else {
