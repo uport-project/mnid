@@ -1,0 +1,32 @@
+{
+  "name": "eae",
+  "version": "0.1.0",
+  "description": "Extendible Chain Address Encoding",
+  "main": "lib/index.js",
+  "author": "Pelle Braendgaard <pelle.braendgaard@consensys.net>",
+  "license": "MIT",
+  "dependencies": {
+    "base-x": "^3.0.0",
+    "buffer": "^5.0.5",
+    "js-sha3": "^0.5.7",
+    "rlp": "^2.0.0"
+  },
+  "files": [
+    "dist",
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "test": "jest",
+    "build:es5": "./node_modules/.bin/babel src -d lib",
+    "build": "yarn test && yarn build:es5"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-jest": "^19.0.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.24.0",
+    "jest": "^19.0.2",
+    "standard": "^9.0.1"
+  }
+}
