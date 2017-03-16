@@ -8,8 +8,7 @@
   "dependencies": {
     "base-x": "^3.0.0",
     "buffer": "^5.0.5",
-    "js-sha3": "^0.5.7",
-    "rlp": "^2.0.0"
+    "js-sha3": "^0.5.7"
   },
   "files": [
     "dist",
