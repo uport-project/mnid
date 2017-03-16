@@ -14,6 +14,7 @@ The proposal is inspired by the Base58Check encoding, but uses.
 
 The following items could be encoded:
 
+* 1 byte version number currently `1`
 * 1 byte network id or 4 bytes of genesis block hash
 * future data could be placed next and could be [RLP](https://github.com/ethereum/wiki/wiki/RLP)
 * actual address data (20 bytes)
@@ -32,8 +33,8 @@ This can be implemented very easily with few dependencies. It would be trivial t
 ### Examples
 
 - hex: `0x00521965e7bd230323c423d96c657db5b79d099f`
-- main-net: `3FeXiAwmuLCF5ivArnhvmt3AMupZeFCT8LFum6g`
-- ropsten: `3FeoPVaGLrxyPkic7pLbPqSmjPxMmFSEHz2yfmt`
+- main-net: `2nQtiQG6Cgm1GYTBaaKAgr76uY7iSexUkqX`
+- ropsten: `2oDZvNUgn77w2BKTkd9qKpMeUo8EL94QL5V`
 
 ## Previous Work
 

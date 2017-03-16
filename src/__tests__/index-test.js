@@ -5,34 +5,34 @@ describe('encode', () => {
     expect(encode({
       network: '0x01',
       address: '0x00521965e7bd230323c423d96c657db5b79d099f'
-    })).toEqual('QNJLTnSvaNyBVVQJuu6i1RWQykxgbXcVm')
+    })).toEqual('2nQtiQG6Cgm1GYTBaaKAgr76uY7iSexUkqX')
   })
 
   it('with genesis hash', () => {
     expect(encode({
       network: '0x94365e3a',
       address: '0x00521965e7bd230323c423d96c657db5b79d099f'
-    })).toEqual('2XR6JggKNT6rVxVXYdMbTYzL4r4FmZTM9fTyUNs')
+    })).toEqual('5A8bRWU3F7j3REx3vkJWxdjQPp4tqmxFPmab1Tr')
   })
 
   it('ropsten', () => {
     expect(encode({
       network: '0x03',
       address: '0x00521965e7bd230323c423d96c657db5b79d099f'
-    })).toEqual('2D3WJgP2LwJipMmaMkZjgFy5fzGr3zCvhB')
+    })).toEqual('2oDZvNUgn77w2BKTkd9qKpMeUo8EL94QL5V')
   })
 
   it('kovan', () => {
     expect(encode({
       network: '0x2a', 
       address: '0x00521965e7bd230323c423d96c657db5b79d099f'
-    })).toEqual('HuE2hv1G2yNtiGCxK7ZAb9amDfKdr63mHg')
+    })).toEqual('34ukSmiK1oA1C5Du8aWpkjFGALoH7nsHeDX')
   })
 })
 
 describe('decode', () => {
   it('main-net', () => {
-    expect(decode('QNJLTnSvaNyBVVQJuu6i1RWQykxgbXcVm')).toEqual(
+    expect(decode('2nQtiQG6Cgm1GYTBaaKAgr76uY7iSexUkqX')).toEqual(
       {
         network: '0x01',
         address: '0x00521965e7bd230323c423d96c657db5b79d099f'
@@ -47,7 +47,7 @@ describe('decode', () => {
   })
 
   it('with genesis hash', () => {
-    expect(decode('2XR6JggKNT6rVxVXYdMbTYzL4r4FmZTM9fTyUNs')).toEqual(
+    expect(decode('5A8bRWU3F7j3REx3vkJWxdjQPp4tqmxFPmab1Tr')).toEqual(
       {
         network: '0x94365e3a',
         address: '0x00521965e7bd230323c423d96c657db5b79d099f'
@@ -56,7 +56,7 @@ describe('decode', () => {
   })
 
   it('ropsten', () => {
-    expect(decode('2D3WJgP2LwJipMmaMkZjgFy5fzGr3zCvhB')).toEqual(
+    expect(decode('2oDZvNUgn77w2BKTkd9qKpMeUo8EL94QL5V')).toEqual(
       {
         network: '0x03',
         address: '0x00521965e7bd230323c423d96c657db5b79d099f'
@@ -65,7 +65,7 @@ describe('decode', () => {
   })
 
   it('kovan', () => {
-    expect(decode('HuE2hv1G2yNtiGCxK7ZAb9amDfKdr63mHg')).toEqual(
+    expect(decode('34ukSmiK1oA1C5Du8aWpkjFGALoH7nsHeDX')).toEqual(
       {
         network: '0x2a',
         address: '0x00521965e7bd230323c423d96c657db5b79d099f'

@@ -8,7 +8,7 @@ function checksum (payload) {
 }
 
 export function encode ({network, address}) {
-  const payload = [new Buffer(network.slice(2), 'hex'), new Buffer(address.slice(2), 'hex')]
+  const payload = [new Buffer('01', 'hex'), new Buffer(network.slice(2), 'hex'), new Buffer(address.slice(2), 'hex')]
   payload.push(checksum(payload))
   return base58.encode(Buffer.concat(payload))
 }
@@ -16,10 +16,11 @@ export function encode ({network, address}) {
 export function decode (encoded) {
   const data = Buffer.from(base58.decode(encoded))
   const netLength = data.length - 24
-  const network = data.slice(0, netLength)
+  const version = data.slice(0, 1)
+  const network = data.slice(1, netLength)
   const address = data.slice(netLength, 20 + netLength)
   const check = data.slice(netLength + 20)
-  if (check.equals(checksum([network, address]))) {
+  if (check.equals(checksum([version, network, address]))) {
     return {
       network: `0x${network.toString('hex')}`,
       address: `0x${address.toString('hex')}`
