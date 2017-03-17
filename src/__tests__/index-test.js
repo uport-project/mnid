@@ -28,6 +28,13 @@ describe('encode', () => {
       address: '0x00521965e7bd230323c423d96c657db5b79d099f'
     })).toEqual('34ukSmiK1oA1C5Du8aWpkjFGALoH7nsHeDX')
   })
+
+  it('infuranet', () => {
+    expect(encode({
+      network: '0x16b2',
+      address: '0x00521965e7bd230323c423d96c657db5b79d099f'
+    })).toEqual('9Xy8yQpdeCNSPGQ9jwTha9MRSb2QJ8HYzf1u')
+  })
 })
 
 describe('decode', () => {
