@@ -54,6 +54,20 @@ It would be trivial to add shard ids, fork descriptors (block number and hash) e
 > mnid.decode('2nQtiQG6Cgm1GYTBaaKAgr76uY7iSexUkqX')
 { network: '0x1', 
   address: '0x00521965e7bd230323c423d96c657db5b79d099f' }
+
+// Check if string is a valid MNID
+
+> mnid.isMNID('2nQtiQG6Cgm1GYTBaaKAgr76uY7iSexUkqX')
+true
+
+> mnid.isMNID('0x00521965e7bd230323c423d96c657db5b79d099f')
+false
+
+> mnid.isMNID('1GbVUSW5WJmRCpaCJ4hanUny77oDaWW4to')
+false
+
+> mnid.isMNID('QmXuNqXmrkxs4WhTDC2GCnXEep4LUD87bu97LQMn1rkxmQ')
+false
 ```
 
 ## Inspirations

@@ -1,4 +1,4 @@
-import { encode, decode } from '../index'
+import { encode, decode, isMNID } from '../index'
 
 describe('encode', () => {
   it('main-net', () => {
@@ -49,7 +49,7 @@ describe('decode', () => {
 
   it('bad checksum', () => {
     expect(() => {
-      decode('3FeXiAwmuLCe5ivArnhvmt3AMupZeFCT8LFum6g')
+      decode('2nQtiQG6Cgm1GYTBaaKAgr76uY7iSexUkqU')
     }).toThrow('Invalid address checksum')
   })
 
@@ -79,4 +79,32 @@ describe('decode', () => {
       }
     )
   })
+})
+
+describe('isMNID', () => {
+  it('is valid', () => {
+    expect(isMNID('2nQtiQG6Cgm1GYTBaaKAgr76uY7iSexUkqX')).toBeTruthy()
+    expect(isMNID('5A8bRWU3F7j3REx3vkJWxdjQPp4tqmxFPmab1Tr')).toBeTruthy()
+    expect(isMNID('2oDZvNUgn77w2BKTkd9qKpMeUo8EL94QL5V')).toBeTruthy()
+    expect(isMNID('34ukSmiK1oA1C5Du8aWpkjFGALoH7nsHeDX')).toBeTruthy()
+    // bad checksum but still MNID
+    expect(isMNID('2nQtiQG6Cgm1GYTBaaKAgr76uY7iSexUkqU')).toBeTruthy()
+  })
+
+  it('is invalid', () => {
+    // Ethereum Hex
+    expect(isMNID('0x00521965e7bd230323c423d96c657db5b79d099f')).toBeFalsy()
+    // Bitcoin
+    expect(isMNID('1GbVUSW5WJmRCpaCJ4hanUny77oDaWW4to')).toBeFalsy()
+
+    // IPFS
+    expect(isMNID('QmXuNqXmrkxs4WhTDC2GCnXEep4LUD87bu97LQMn1rkxmQ')).toBeFalsy()
+
+    // Cut off
+    expect(isMNID('2nQtiQG6Cgm1GYTBaaKAgr76uY7iSexUkq')).toBeFalsy()
+
+    expect(isMNID('')).toBeFalsy()
+    expect(isMNID(null)).toBeFalsy()
+  })
+
 })
