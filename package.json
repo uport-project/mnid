@@ -1,6 +1,6 @@
 {
   "name": "mnid",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Multi Network Identifier - Blockchain Address Encoding",
   "main": "lib/index.js",
   "author": "Pelle Braendgaard <pelle.braendgaard@consensys.net>",
