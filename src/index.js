@@ -31,3 +31,12 @@ export function decode (encoded) {
     throw new Error('Invalid address checksum')
   }
 }
+
+export function isMNID (encoded) {
+  try {
+    const data = Buffer.from(base58.decode(encoded))
+    return data.length > 24 && data[0] === 1
+  } catch (e) {
+    return false
+  }
+}
