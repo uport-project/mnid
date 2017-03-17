@@ -1,14 +1,12 @@
 # Multi Network Identifier (MNID)
 
-Ethereum and uPort is headed into a multi-chain world. As end users are are interacting more and more with Ethereum and multiple chains the risk of monetary loss of users/servers inadvertently transferring value from an address on network X to an address of Y is growing higher and higher.
+Ethereum, and uPort, is entering a multi-chain world. As end users increasingly interact with multiple chains, on Ethereum or elsewhere, the risk of users/servers inadvertently transferring value from an address on network X to an address on network Y is growing. This could result in monetary loss. Since uPort is switching to a new test network, we need to solve this issue urgently.
 
-The Bitcoin protocol uses [Base58Check encoding](https://en.bitcoin.it/wiki/Base58Check_encoding) to prevent this, but the ethereum ecosystem has used a raw hex version of the address instead.
-
-As uPort is switching networks and is planning on living in a primarily multi network world we need to solve this issue urgently.
+The Bitcoin protocol uses [Base58Check encoding](https://en.bitcoin.it/wiki/Base58Check_encoding) to prevent users from sending value off-network, but the ethereum ecosystem has used a raw hex version of the address instead.
 
 ## Extendible Encoding
 
-My proposal is inspired by the Base58Check encoding as well as [EIP77](https://github.com/ethereum/EIPs/issues/77) but specifies adds a network identifier, which allows us to programmatically extract the network used by an address as well as provide a visual indicator of the network used.
+My proposal is inspired by the Base58Check encoding as well as [EIP77](https://github.com/ethereum/EIPs/issues/77) but also specifies a network identifier, which allows us to programmatically extract the network used by an address as well as provide a visual indicator of the network used.
 
 The following items are encoded:
 
@@ -17,15 +15,15 @@ The following items are encoded:
 * actual address data
 * Four bytes (32 bits) of SHA3-based error checking code (digest of the version, network and payload)
 
-Then use base58 encoding of the end result. The end result is fairly complete but still extendible in the future. We could start using simply the network id and replace it with with genesis block hash and other meta data in the future.
+Then base58 encoding is applied to the end result. The end result is fairly complete but still extendible in the future. We could start by simply using the network id and replace it with the genesis block hash and other meta data in the future.
 
 ### Benefits
 
-This works with ethereum based blockchains, but can easily be extended to use other blockchains or even non blockchain identifiers in the future. It would also be straightforward to add further details specifying which fork etc.
+This works with ethereum blockchains, but can easily be extended to other blockchains or even non-blockchain identifiers in the future. It would also be straightforward to add further details specifying which fork etc.
 
 ### Ease of Implementation
 
-This can be implemented very easily with few dependencies. It would be trivial to use this to add multichain support to uport-lite for example. Thus even allowing (if we want it) the interchange of JWT's verified on different networks.
+This can be implemented very easily with few dependencies. It would be trivial to use this to add multichain support to uport-lite for example. Thus even allowing (if desired) the interchange of JWT's verified on different networks.
 
 ### Examples
 
@@ -68,7 +66,7 @@ Bitcoin's encoding consists of the following 3 items:
 
 The whole thing is base58 encoded for compactness and URL safety.
 
-The version prefix allows humans to visually recognize the address type from the first couple of characters. The error checking code ensures that there aren't any obvious errors in hte address
+The version prefix allows humans to visually recognize the address type from the first few characters in the string. The error checking code ensures that there aren't any obvious errors in the address.
 
 ### EIP77 
 
