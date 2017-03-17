@@ -41,7 +41,22 @@ The following Ethereum hex encoded address `0x00521965e7bd230323c423d96c657db5b7
 
 It would be trivial to add shard ids, fork descriptors (block number and hash) etc to the address. It would also be trivial to encode other kinds of identities that don't correspond directly to an address on a chain.
 
-## Previous Work
+## Javascript reference implementation
+
+```js
+> var mnid = require('mnid')
+> mnid.encode({
+  network: '0x1', // the hex encoded network id or for private chains the hex encoded first 4 bytes of the genesis hash
+  address: '0x00521965e7bd230323c423d96c657db5b79d099f'
+})
+'2nQtiQG6Cgm1GYTBaaKAgr76uY7iSexUkqX'
+
+> mnid.decode('2nQtiQG6Cgm1GYTBaaKAgr76uY7iSexUkqX')
+{ network: '0x1', 
+  address: '0x00521965e7bd230323c423d96c657db5b79d099f' }
+```
+
+## Inspirations
 
 ### Base58Check Encoding
 
