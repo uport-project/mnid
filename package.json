@@ -6,7 +6,7 @@
   "author": "Pelle Braendgaard <pelle.braendgaard@consensys.net>",
   "license": "MIT",
   "dependencies": {
-    "base-x": "^3.0.0",
+    "base-x": "3.0.4",
     "buffer": "^5.0.5",
     "js-sha3": "^0.5.7"
   },
